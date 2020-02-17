@@ -41,9 +41,9 @@ def get_iou_vector(A, B):
     return np.mean(metric)
 
 def my_iou_metric(label, pred):
-    return tf.py_func(get_iou_vector, [label, pred>0.5], tf.float64)
+    return tf.compat.v1.py_func(get_iou_vector, [label, pred>0.5], tf.float64)
 
-model = load_model(r"C:\Users\LENOVO\Downloads\U-net.h5", custom_objects={'my_iou_metric':my_iou_metric})
+model = load_model(r"C:\Users\Spetsnaz\Desktop\Salt_Process\U-net.h5", custom_objects={'my_iou_metric':my_iou_metric})
 model._make_predict_function()
 
 
